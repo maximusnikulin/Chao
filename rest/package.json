@@ -1,0 +1,23 @@
+{
+  "name": "rest-test-sveak",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "author": "",
+  "license": "MIT",
+  "engines": {
+    "node": ">=8.4.0"
+  },
+  "scripts": {    
+    "start": "nodemon index.js",
+    "reset-db": "rm -rf ./test.db && node ./create-mock-data.js"    
+  },
+  "dependencies": {
+    "express": "^4.15.4",      
+    "sequelize": "^4.7.5",
+    "sqlite3": "^3.1.9"
+  },
+  "devDependencies": {
+    "nodemon": "^1.12.5"    
+  }  
+}
