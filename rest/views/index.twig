@@ -10,9 +10,11 @@
 <body>
   <div>
     Hello rest for Chao chat 
-    <div>
-      {{foo}}
-    </div>
+    {% block content %}
+    {% endblock %}
   </div>
+    
+  {% block script %}
+  {% endblock %}
 </body>
 </html>
