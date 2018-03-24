@@ -39,9 +39,7 @@ function createData () {
 
       return Promise.all(promises);
     })
-    .then(([messages]) => {
-      console.log(messages);
-    })
+    .then(() => console.log('Success created !!!'))    
     
 }
 

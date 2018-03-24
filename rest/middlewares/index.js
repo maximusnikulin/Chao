@@ -1,9 +1,7 @@
-module.exports.authMiddleware = function(req, res, next) {
-  const random = Math.round(Math.random());
-  //check session
-  if (random) { 
-    return res.redirect('/login');
-  }
-  
-  return next();
-}
+const passport = require('passport');
+const strategies = require('../config/strategies');
+
+module.exports.authLocal = passport.authenticate('local', {
+  failureRedirect: '/login',
+  successRedirect: '/'
+});

@@ -1,5 +1,5 @@
 {% block content %}
-<form action="/">
+<form action="/auth" method="POST">
   <fieldset>
     <label for="login">Login</label>
     <input type="text" id="login"/>
@@ -8,5 +8,6 @@
     <label for="password">Password</label>
     <input type="password" id="password"/>
   </fieldset> 
+  <input type="submit" value="Sign In" />
 </form>
 {% endblock %}

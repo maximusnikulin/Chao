@@ -23,14 +23,8 @@ module.exports = function (sequelize) {
     timestamps: false,
   })  
 
-  Message.belongsTo(User, {
-    // foreignKey: 'authorId',
-    // as: 'Author'
-  });
-
-  User.hasMany(Message, {
-    // as: 'Messages'
-  })
+  Message.belongsTo(User);
+  User.hasMany(Message);
 
   return {
     Room, User, Message
