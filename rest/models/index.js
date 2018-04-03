@@ -5,7 +5,7 @@ const scheme = require('./scheme');
 const sequelize = new Sequelize(null, null, null, {  
     dialect: 'sqlite',
     storage: './test.db',  
-    logging: true  
+    logging: false  
 });
 
 sequelize

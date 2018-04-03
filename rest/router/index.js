@@ -1,13 +1,22 @@
 const express = require('express');
-const { index, private, login, auth } = require('./controllers');
-const { authLocal } = require('../middlewares');
+const passport = require('passport');
+const { index, private, login } = require('./controllers');
+const { withAuth } = require('../middlewares/index');
 
 const router = express.Router();
 
 router.get('/', index);
 router.get('/login', login);
-router.get('/private', authLocal, private);
+router.get('/private', withAuth, private);
 
-router.post('/auth', auth);
+router.get('/logout', function(req, res){
+  req.logout();
+  res.redirect('/');
+});
+
+router.post('/login', passport.authenticate('local', {
+  successRedirect: '/',
+  failureRedirect: '/login'
+}));
 
 module.exports = router;

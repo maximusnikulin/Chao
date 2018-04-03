@@ -10,7 +10,13 @@
 <body>
   <div>
     Hello rest for Chao chat 
-    <a href="/login">Log In</a>
+    {% if userAuth %}
+      <a href="/private">Go to private</a>
+      <a href="/logout">Log Out</a>
+    {% else %}
+      <a href="/login">Log In</a>
+    {% endif %}
+    
     {% block content %}
     {% endblock %}
   </div>

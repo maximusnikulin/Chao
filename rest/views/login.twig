@@ -1,12 +1,12 @@
 {% block content %}
-<form action="/auth" method="POST">
+<form action="/login" method="POST">
   <fieldset>
     <label for="login">Login</label>
-    <input type="text" id="login"/>
+    <input type="text" id="login" name="login"/>
   </fieldset> 
   <fieldset>
     <label for="password">Password</label>
-    <input type="password" id="password"/>
+    <input type="password" id="password" name="password"/>
   </fieldset> 
   <input type="submit" value="Sign In" />
 </form>

@@ -5,11 +5,13 @@ function createData () {
   let usersPromise = models.User.bulkCreate([
     {
       name: 'Bruce Wayne',
-      login: 'Batman'      
+      login: 'Batman',
+      password: 'securegotham'      
     },
     {
       name: 'Piter Parker',
-      login: 'Spiderman',      
+      login: 'Spiderman',
+      password: 'securenewyork'            
     }    
   ]);
 

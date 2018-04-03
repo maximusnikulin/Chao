@@ -13,12 +13,12 @@ const app = express();
 app.set('view engine', 'twig');
 
 app.use(express.static(path.join(__dirname, 'public')));
-app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
-app.use(session({
-  secret: 'my-secret-key'
-}));
+app.use(session({secret: 'my-secret-key'}));
+app.use(bodyParser.urlencoded({ extended: false }));
 app.use(passport.initialize());
+app.use(passport.session());
+
 app.use('/', router)
 
 app.listen(config.port, () => console.log(`Express app listening on localhost:${config.port}`));

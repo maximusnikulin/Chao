@@ -6,8 +6,12 @@ module.exports = function (sequelize) {
     password: Sequelize.STRING,
     name: Sequelize.STRING
   }, {
-    timestamps: false,
+    timestamps: false,  
   });
+
+  User.prototype.isValidPassword = function(value) {
+    return this.password === value;
+  }
 
   const Room = sequelize.define('Room', {
     title: Sequelize.STRING           
