@@ -6,12 +6,14 @@ function createData () {
     {
       name: 'Bruce Wayne',
       login: 'Batman',
-      password: 'securegotham'      
+      password: 'securegotham',
+      age: 45      
     },
     {
       name: 'Piter Parker',
       login: 'Spiderman',
-      password: 'securenewyork'            
+      password: 'securenewyork',
+      age: 25
     }    
   ]);
 

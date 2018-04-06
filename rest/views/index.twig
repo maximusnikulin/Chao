@@ -9,16 +9,21 @@
 </head>
 <body>
   <div>
-    Hello rest for Chao chat 
+    <p>Hello rest for Chao chat</p>
     {% if userAuth %}
-      <a href="/private">Go to private</a>
+      <p>
+        <a href="/private">Go to private</a>
+      </p>
       <a href="/logout">Log Out</a>
     {% else %}
-      <a href="/login">Log In</a>
+      <p>
+        <a href="/login">Log In</a>
+      </p>
     {% endif %}
     
     {% block content %}
     {% endblock %}
+
   </div>
     
   {% block script %}

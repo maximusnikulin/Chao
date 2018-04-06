@@ -1,10 +1,13 @@
 const Sequelize = require('sequelize');
 
+
 module.exports = function (sequelize) {  
   const User = sequelize.define('User', {   
     login: Sequelize.STRING,
     password: Sequelize.STRING,
-    name: Sequelize.STRING
+    name: Sequelize.STRING,
+    age: Sequelize.INTEGER,
+    googleId: Sequelize.STRING
   }, {
     timestamps: false,  
   });
