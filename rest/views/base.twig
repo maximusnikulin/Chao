@@ -8,12 +8,9 @@
   <link rel="stylesheet" href="/css/style.css">
 </head>
 <body>
-  <div>
-    <p>Hello rest for Chao chat</p>
-    {% if userAuth %}
-      <p>
-        <a href="/private">Go to private</a>
-      </p>
+  <div>    
+    {% if user %}      
+      <p>Welcome  to <strong>ChaoChat</strong>, {{user.name}}</p>
       <a href="/logout">Log Out</a>
     {% else %}
       <p>

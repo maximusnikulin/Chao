@@ -1,19 +1,21 @@
 const passport = require('passport');
 
-const { models, sequelize } = require('../models');
+const { models: { Room, User }, sequelize } = require('../models');
 const { authLocal } = require('../middlewares/index');
 
 
-module.exports.index = function(req, res) {   
-  res.render('index', { userAuth: req.user }); 
-};
-
-module.exports.private = function(req, res) {      
-  return res.render('private', {
-    expires: req.session.cookie.expires,
-    login: req.user.login,
-    name: req.user.name
-  }); 
+module.exports.index = function(req, res) {  
+  const userId = req.user.id;   
+  User.findOne({
+    where: { id: userId },
+    include: [{ model: Room }]
+  })
+  .then(function(user) {            
+    res.render('cabinet', { 
+      user: user,
+      rooms: user.Rooms
+    }); 
+  });  
 };
 
 module.exports.logout = function(req, res) {

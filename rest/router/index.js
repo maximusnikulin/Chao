@@ -15,10 +15,9 @@ const {
 
 const router = express.Router();
 
-router.get('/', index);
+router.get('/', withAuth, index);
 router.get('/login', login);
 router.get('/logout', logout);
-router.get('/private', withAuth, private);
 
 //service routes
 router.post('/auth', passportLocalAuth);

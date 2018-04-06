@@ -8,7 +8,8 @@ module.exports = function (sequelize) {
     name: Sequelize.STRING,
     age: Sequelize.INTEGER,
     googleId: Sequelize.STRING
-  }, {
+  }, 
+  {
     timestamps: false,  
   });
 
@@ -30,9 +31,22 @@ module.exports = function (sequelize) {
     timestamps: false,
   })  
 
+  // const UserRoom = sequelize.define('UserRoom', {
+  //   isAdmin: Sequelize.BOOLEAN
+  // },
+  // {
+  //   timestamps: false,
+  // });
+
   Message.belongsTo(User);
   User.hasMany(Message);
 
+  Message.belongsTo(Room);
+  Room.hasMany(Message);
+
+  User.belongsToMany(Room, { through: 'UserRoom' });  
+  Room.hasMany(User);
+  
   return {
     Room, User, Message
   };
