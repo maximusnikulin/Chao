@@ -1,17 +1,18 @@
 const path = require('path');
 const express = require('express');
+const router = require('./router');
 const { port, passport } = require('./config');
 const bodyParser = require('body-parser');
-const router = require('./router');
 const twig = require('twig').twig;
 const cookieParser = require('cookie-parser');
-const { withSessions } = require('./middlewares/index');
+const { withSessions, withLocals } = require('./middlewares/index');
 
 const app = express();
 
+
 app.set('view engine', 'twig');
 app.enable('trust proxy')
-
+app.use(withLocals);
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(cookieParser());
 app.use(withSessions);

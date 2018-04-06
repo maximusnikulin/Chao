@@ -4,15 +4,14 @@ const { models: { Room, User }, sequelize } = require('../models');
 const { authLocal } = require('../middlewares/index');
 
 
-module.exports.index = function(req, res) {  
-  const userId = req.user.id;   
+module.exports.index = function(req, res) {    
+  const userId = req.user.id;  
   User.findOne({
     where: { id: userId },
     include: [{ model: Room }]
   })
   .then(function(user) {            
-    res.render('cabinet', { 
-      user: user,
+    res.render('cabinet', {       
       rooms: user.Rooms
     }); 
   });  

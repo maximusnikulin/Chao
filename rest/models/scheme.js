@@ -29,14 +29,7 @@ module.exports = function (sequelize) {
   },
   {
     timestamps: false,
-  })  
-
-  // const UserRoom = sequelize.define('UserRoom', {
-  //   isAdmin: Sequelize.BOOLEAN
-  // },
-  // {
-  //   timestamps: false,
-  // });
+  });  
 
   Message.belongsTo(User);
   User.hasMany(Message);

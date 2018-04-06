@@ -13,8 +13,7 @@
     "reset-db": "rm -rf ./test.db && node ./create-mock-data.js"
   },
   "dependencies": {
-    "express": "^4.15.4",
-    "express-session": "^1.15.6",
+    "express": "^4.15.4",    
     "express-sessions": "^1.0.6",
     "sequelize": "^4.7.5",
     "sqlite3": "^3.1.9"

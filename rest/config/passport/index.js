@@ -14,10 +14,9 @@ passport.serializeUser(function(req, user, done) {
 });
 
 passport.deserializeUser(function(req, userId, done) {     
-  User.findById(userId).then(function(user) {
-    console.log('Deserialize');    
+  User.findById(userId).then(function(user) {    
     done(null, user);
-  })    
+  });    
 });
 
 module.exports = passport;
