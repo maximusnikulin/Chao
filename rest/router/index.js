@@ -9,7 +9,9 @@ const {
   logout, 
   passportLocalAuth,
   passportGoogleAuth,
-  passportGoogleCallback 
+  passportGoogleCallback,
+  users,
+  userInfo
 } = require('./controllers');
 
 
@@ -26,5 +28,9 @@ router.get('/auth/google/callback', passportGoogleCallback, function(req, res) {
   console.log('callback from google');
   res.redirect('/');
 });
+
+//rest
+router.get('/users', users);
+router.get('/users/:id', userInfo);
 
 module.exports = router;

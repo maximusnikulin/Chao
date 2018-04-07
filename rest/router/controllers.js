@@ -17,6 +17,7 @@ module.exports.index = function(req, res) {
   });  
 };
 
+
 module.exports.logout = function(req, res) {
   req.logout();
   res.redirect('/');
@@ -38,3 +39,23 @@ module.exports.passportGoogleAuth = passport.authenticate('google', {
 module.exports.passportGoogleCallback = passport.authenticate('google', { 
   failureRedirect: '/login' 
 });
+
+module.exports.users = function(req, res) {
+  User.findAll({
+    attributes: ['id', 'name', 'login'],
+  })
+    .then(function(users) {
+      res.json(users);
+    });
+};
+
+module.exports.userInfo = function(req, res) {
+  User.findOne({    
+    where: {
+      id: req.params.id
+    }
+  })
+  .then(function(userInfo) {
+    res.json(userInfo);
+  });
+};
