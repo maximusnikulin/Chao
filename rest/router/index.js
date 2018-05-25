@@ -11,7 +11,10 @@ const {
   passportGoogleAuth,
   passportGoogleCallback,
   users,
-  userInfo
+  userInfo,
+  roomInfo,
+  roomCreateGet,
+  roomCreatePost
 } = require('./controllers');
 
 
@@ -32,5 +35,20 @@ router.get('/auth/google/callback', passportGoogleCallback, function(req, res) {
 //rest
 router.get('/users', users);
 router.get('/users/:id', userInfo);
+router.get('/rooms/create', roomCreateGet);
+router.post('/rooms/create', roomCreatePost);
+router.get('/rooms/:id', roomInfo);
+
+router.get('/rest/', function(req, res) {
+  console.log('[COOKIES]', req.cookies);
+  console.log('[QUERY]', req.query)
+  res.send('Hello get to rest')
+})
+
+router.post('/rest/', function(req, res) {  
+  console.log('[BODY]', req.body);
+  console.log('[COOKIES]', req.cookies);
+  res.send('Success')
+})
 
 module.exports = router;

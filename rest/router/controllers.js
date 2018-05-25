@@ -1,6 +1,6 @@
 const passport = require('passport');
 
-const { models: { Room, User }, sequelize } = require('../models');
+const { models: { Room, User, UserRoom }, sequelize } = require('../models');
 const { authLocal } = require('../middlewares/index');
 
 
@@ -16,7 +16,6 @@ module.exports.index = function(req, res) {
     }); 
   });  
 };
-
 
 module.exports.logout = function(req, res) {
   req.logout();
@@ -44,9 +43,9 @@ module.exports.users = function(req, res) {
   User.findAll({
     attributes: ['id', 'name', 'login'],
   })
-    .then(function(users) {
-      res.json(users);
-    });
+  .then(function(users) {
+    res.json(users);
+  });
 };
 
 module.exports.userInfo = function(req, res) {
@@ -59,3 +58,40 @@ module.exports.userInfo = function(req, res) {
     res.json(userInfo);
   });
 };
+
+module.exports.roomInfo = async function(req, res) {
+  const room = await Room.find({
+    where: {
+      id: req.params.id
+    },    
+    include: [
+      {
+        model: User,
+        attributes: {
+          exclude: ['password']
+        },
+        through: {
+          attributes: []
+        }
+      }
+    ]
+  })  
+
+  res.json(room);
+}
+
+module.exports.roomCreateGet = function(req, res) {       
+  res.render('createRoom');  
+}
+
+module.exports.roomCreatePost = async function(req, res) {
+  const room = await Room.create({
+    title: req.body.title,    
+  });
+
+  const roomUser = await UserRoom.create({
+    RoomId: room.id,
+    UserId: req.user.id
+  })
+  res.redirect('/rooms/' + room.id)
+}

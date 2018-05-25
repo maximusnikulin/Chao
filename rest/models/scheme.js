@@ -38,8 +38,9 @@ module.exports = function (sequelize) {
   Room.hasMany(Message);
 
   User.belongsToMany(Room, { through: 'UserRoom' });  
-  Room.hasMany(User);
-  
+  Room.belongsToMany(User, { through: 'UserRoom' });  
+  // Room.hasMany(User);
+
   return {
     Room, User, Message
   };

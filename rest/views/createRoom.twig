@@ -1,0 +1,13 @@
+{% extends './base.twig' %}
+
+{% block content %}
+  </br>
+  <form action="/rooms/create/" method="POST" enctype="application/x-www-form-urlencoded">
+    <fieldset>
+      <label for="name_room">Name of room</label>
+      <input type="text" id="name_room" name="title" value="Los Angeles"/>      
+    </fieldset>
+    </br>
+    <button>Send</button>
+  </form>
+{% endblock %}
